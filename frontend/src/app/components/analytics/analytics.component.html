@@ -1,0 +1,134 @@
+<div class="dashboard">
+    <!-- Overlay -->
+    <div class="overlay" [class.show]="isSidenavOpen" (click)="toggleSidenav()"></div>
+  
+    <!-- Side Navigation -->
+    <div class="sidenav" [class.open]="isSidenavOpen">
+      <div class="sidenav-header" (click)="goToEditProfile()">
+        <img src="assets/kelly.jpg" alt="Profile Picture" />
+        <div class="user-info">
+          <h3>John Doe</h3>
+          <p>Admin</p>
+        </div>
+      </div>
+      <ul class="menu">
+        <li
+          class="menu-item"
+          [class.active]="currentTab === 'dashboard'"
+          (click)="setActiveTab('dashboard')"
+        >
+          <i class="pi pi-home"></i>
+          <span>QR Code</span>
+        </li>
+        <li
+          class="menu-item"
+          [class.active]="currentTab === 'forms'"
+          (click)="setActiveTab('forms')"
+        >
+          <i class="pi pi-file"></i>
+          <span>Forms</span>
+        </li>
+        <li
+          class="menu-item"
+          [class.active]="currentTab === 'about'"
+          (click)="setActiveTab('about')"
+        >
+          <i class="pi pi-user"></i>
+          <span>About</span>
+        </li>
+        <li
+          class="menu-item"
+          [class.active]="currentTab === 'settings'"
+          (click)="setActiveTab('settings')"
+        >
+          <i class="pi pi-cog"></i>
+          <span>Settings</span>
+        </li>
+      </ul>
+      <div class="logout" (click)="logout()">
+        <span>Logout</span>
+      </div>
+    </div>
+  
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="menu-button" (click)="toggleSidenav()">
+        <i class="pi pi-bars"></i>
+      </button>
+      <h1>Analytics</h1>
+      <div class="profile" (click)="toggleNotifications()">
+        <img src="assets/kelly.jpg" alt="Profile Picture" />
+        <span class="notification-dot"></span>
+      </div>
+    </div>
+  
+     <!-- Notifications Pop-up -->
+     <div class="notifications" [class.visible]="isNotificationsVisible">
+      <h3>Notifications</h3>
+      <div class="notification-item">
+        <img src="assets/kelly.jpg" alt="User Avatar" />
+        <div class="notification-content">
+          <p>pogi&#64;gmail.com</p>
+          <small>Oct 30</small>
+          <p>"Help me please"</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <img src="assets/kelly.jpg" alt="User Avatar" />
+        <div class="notification-content">
+          <p>pogi&#64;gmail.com</p>
+          <small>Oct 30</small>
+          <p>"Help me please"</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <img src="assets/kelly.jpg" alt="User Avatar" />
+        <div class="notification-content">
+          <p>pogi&#64;gmail.com</p>
+          <small>Oct 30</small>
+          <p>"Help me please"</p>
+        </div>
+      </div>
+    </div>
+    <div class="share-page">
+      <!-- Header Section -->
+      <div class="header">
+        <button class="back-button" (click)="goBack()">
+          <i class="pi pi-arrow-left"></i>
+        </button>
+        <h1>
+          Form Title
+          <i class="pi pi-pencil" (click)="editForm()"></i>
+        </h1>
+        <div class="print-icon" (click)="printAnalytics()">
+            <i class="pi pi-print"></i>
+          </div>
+        <div class="dropdown-menu" [class.show]="isDropdownVisible">
+          <ul>
+            <li (click)="editForm()">Edit</li>
+            <li (click)="navigateToShare()">Share</li>
+            <li (click) ="navigateToAnalytics()"> Analytics</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="feedback-cards">
+        <div class="card positive">
+          <h3>72%</h3>
+          <p>POSITIVE</p>
+        </div>
+        <div class="card negative">
+          <h3>21%</h3>
+          <p>NEGATIVE</p>
+        </div>
+        <div class="card neutral">
+          <h3>57%</h3>
+          <p>NEUTRAL</p>
+        </div>
+        <div class="card total-feedbacks">
+          <h3>589</h3>
+          <p>FEEDBACKS</p>
+        </div>
+      </div>
+      
+</div>

@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.dashboard {
+  font-family: 'Poppins', sans-serif; /* Use Poppins font for all text */
+  padding: 1rem;
+  margin-top: 3rem; /* Push the dashboard below the fixed top bar */
+  position: relative;
+
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent gray */
+    z-index: 1090; /* Above content but below sidenav */
+    display: none;
+  }
+
+  .overlay.show {
+    display: block;
+  }
+
+  /* Sidenav */
+  .sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px; /* Slightly wider */
+    height: calc(100% + 50px); /* Extended height to make it longer */
+    background: white;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1100;
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    .sidenav-header {
+      background: #5db075;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 1rem;
+      }
+
+      .user-info {
+        h3 {
+          margin: 0;
+          font-size: 1rem;
+        }
+        p {
+          margin: 0;
+          font-size: 0.8rem;
+          color: #d3f5dc;
+        }
+      }
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+
+      .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 0.8rem 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        i {
+          font-size: 1.2rem;
+          margin-right: 0.8rem;
+        }
+
+        span {
+          font-size: 1rem;
+        }
+
+        &:hover {
+          background: #f9f9f9;
+        }
+
+        &.active {
+          background: #e8f5e9;
+          border-left: 4px solid #5db075;
+
+          i,
+          span {
+            color: #5db075;
+          }
+        }
+      }
+    }
+
+    .logout {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      color: #f44336;
+      cursor: pointer;
+
+      &:hover {
+        background: #fdecea;
+      }
+    }
+  }
+
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #5db075;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: 4rem;
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1200; /* Above both sidenav and overlay */
+  }
+  /* Top Bar */
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    background-color: #5DB075; /* Green top bar */
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .menu-button {
+      background: none;
+      border: none;
+      color: black;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .profile {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .notification-dot {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  /* Notifications Pop-up */
+  .notifications {
+    position: absolute;
+    top: 4.5rem;
+    right: 1rem;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 1rem;
+    display: none; /* Hidden by default */
+
+    &.visible {
+      display: block; /* Show when visible class is added */
+    }
+
+    h3 {
+      margin: 0 0 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .notification-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #ddd; /* Add line between notifications */
+
+      &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none; /* Remove line for the last notification */
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 0.75rem;
+      }
+
+      .notification-content {
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+          color: #333;
+
+          &:first-child {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+          }
+
+          &:last-child {
+            font-style: italic;
+            color: #666;
+          }
+        }
+
+        small {
+          display: block;
+          font-size: 0.75rem;
+          color: #888;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+  .forms-page {
+  padding: 20px;
+}
+
+.new-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Space below the button */
+  }
+  
+  .new-form .form-container {
+    display: flex;
+    justify-content: space-between; /* Space between text and icon */
+    align-items: center; /* Vertically align text and icon */
+    width: 160px; /* Reduce width of the button */
+    height: 40px; /* Reduce height of the button */
+    background-color: #f1f1f1; /* Light gray background */
+    border-radius: 6px; /* Slightly rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 0 10px; /* Inner padding */
+    cursor: pointer; /* Show pointer cursor */
+    transition: background-color 0.3s; /* Smooth hover effect */
+  }
+  .new-form .form-container:hover {
+    background-color: #e0e0e0; /* Slightly darker background on hover */
+  }
+  
+  .new-form .form-container span {
+    font-size: 14px; /* Smaller font size */
+    font-weight: 500; /* Medium weight text */
+    color: #333; /* Text color */
+  }
+  
+  .new-form .form-container i {
+    font-size: 18px; /* Smaller icon size */
+    color: #333; /* Icon color */
+  }
+
+.form-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px; /* Larger padding for a longer look */
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Full width */
+  max-width: 800px; /* Maximum width for better appearance */
+}
+
+.form-item .form-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item .form-details p {
+  font-size: 18px; /* Larger text size */
+  font-weight: bold;
+  margin: 0;
+}
+
+.form-item .form-details small {
+  font-size: 14px; /* Slightly larger subtitle */
+  color: #666;
+}
+
+.form-item i {
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+.menu-container {
+    position: relative; /* Make the container relative for absolute positioning */
+  }
+  
+  .menu-container .pi-ellipsis-v {
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .popup-menu {
+    position: absolute;
+    top: 30px; /* Position the menu below the 3-dot icon */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    min-width: 100px;
+  }
+  
+  .popup-menu button {
+    background: none;
+    border: none;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .popup-menu button:hover {
+    background-color: #f1f1f1;
+  }
+  
+  
+}

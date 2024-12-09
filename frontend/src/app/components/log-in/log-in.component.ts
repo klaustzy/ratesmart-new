@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { RouterLink } from '@angular/router'; // Import RouterLink
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -14,4 +14,11 @@ import { RouterLink } from '@angular/router'; // Import RouterLink
 export class LogInComponent {
   username: string = '';
   password: string = '';
+
+  constructor(private router: Router) {}
+
+  login() {
+    // Redirect to the dashboard
+    this.router.navigate(['/dashboard']);
+  }
 }

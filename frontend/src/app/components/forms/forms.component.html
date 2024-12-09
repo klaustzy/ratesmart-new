@@ -1,0 +1,120 @@
+<div class="dashboard">
+    <!-- Overlay -->
+    <div class="overlay" [class.show]="isSidenavOpen" (click)="toggleSidenav()"></div>
+  
+    <!-- Side Navigation -->
+    <div class="sidenav" [class.open]="isSidenavOpen">
+      <div class="sidenav-header" (click)="goToEditProfile()">
+        <img src="assets/kelly.jpg" alt="Profile Picture" />
+        <div class="user-info">
+          <h3>John Doe</h3>
+          <p>Admin</p>
+        </div>
+      </div>
+      <ul class="menu">
+        <li
+          class="menu-item"
+          [class.active]="currentTab === 'dashboard'"
+          (click)="setActiveTab('dashboard')"
+        >
+          <i class="pi pi-home"></i>
+          <span>Dashboard</span>
+          <li
+          class="menu-item"
+          [class.active]="currentTab === 'forms'"
+          (click)="setActiveTab('forms')"
+        >
+          <i class="pi pi-file"></i>
+          <span>Forms</span>
+        </li>
+        <li
+          class="menu-item"
+          [class.active]="currentTab === 'about'"
+          (click)="setActiveTab('about')"
+        >
+          <i class="pi pi-user"></i>
+          <span>About</span>
+        </li>
+        <li
+          class="menu-item"
+          [class.active]="currentTab === 'settings'"
+          (click)="setActiveTab('settings')"
+        >
+          <i class="pi pi-cog"></i>
+          <span>Settings</span>
+        </li>
+      </ul>
+      <div class="logout" (click)="logout()">
+        <span>Logout</span>
+      </div>
+    </div>
+  
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="menu-button" (click)="toggleSidenav()">
+        <i class="pi pi-bars"></i>
+      </button>
+      <h1>Forms</h1>
+      <div class="profile" (click)="toggleNotifications()">
+        <img src="assets/kelly.jpg" alt="Profile Picture" />
+        <span class="notification-dot"></span>
+      </div>
+    </div>
+  
+    <!-- Notifications Pop-up -->
+    <div class="notifications" [class.visible]="isNotificationsVisible">
+      <h3>Notifications</h3>
+      <div class="notification-item">
+        <img src="assets/kelly.jpg" alt="User Avatar" />
+        <div class="notification-content">
+          <p>pogi&#64;gmail.com</p>
+          <small>Oct 30</small>
+          <p>"Help me please"</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <img src="assets/kelly.jpg" alt="User Avatar" />
+        <div class="notification-content">
+          <p>pogi&#64;gmail.com</p>
+          <small>Oct 30</small>
+          <p>"Help me please"</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <img src="assets/kelly.jpg" alt="User Avatar" />
+        <div class="notification-content">
+          <p>pogi&#64;gmail.com</p>
+          <small>Oct 30</small>
+          <p>"Help me please"</p>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="forms-page">
+        <!-- New Form Button -->
+        <div class="new-form">
+          <div class="form-container" (click)="addNewForm()">
+            <span>New Form</span>
+            <i class="pi pi-plus"></i>
+          </div>
+        </div>
+      
+        <!-- Form List -->
+        <div *ngFor="let form of forms; let i = index" class="form-item">
+          <div class="form-details">
+            <p>{{ form.title }}</p>
+            <small>Last Update: {{ form.lastUpdated }}</small>
+          </div>
+          <!-- Three-dot menu -->
+          <div class="menu-container">
+            <i class="pi pi-ellipsis-v" (click)="toggleMenu(i)"></i>
+            <!-- Popup menu -->
+            <div class="popup-menu" *ngIf="activeMenuIndex === i">
+              <button (click)="editForm(i)">Edit</button>
+              <button (click)="deleteForm(i)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

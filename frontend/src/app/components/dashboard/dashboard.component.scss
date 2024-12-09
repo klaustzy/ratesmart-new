@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.dashboard {
+  font-family: 'Poppins', sans-serif; /* Use Poppins font for all text */
+  padding: 1rem;
+  margin-top: 3rem; /* Push the dashboard below the fixed top bar */
+  position: relative;
+
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent gray */
+    z-index: 1090; /* Above content but below sidenav */
+    display: none;
+  }
+
+  .overlay.show {
+    display: block;
+  }
+
+  /* Sidenav */
+  .sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px; /* Slightly wider */
+    height: calc(100% + 50px); /* Extended height to make it longer */
+    background: white;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1100;
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    .sidenav-header {
+      background: #5db075;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 1rem;
+      }
+
+      .user-info {
+        h3 {
+          margin: 0;
+          font-size: 1rem;
+        }
+        p {
+          margin: 0;
+          font-size: 0.8rem;
+          color: #d3f5dc;
+        }
+      }
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+
+      .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 0.8rem 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        i {
+          font-size: 1.2rem;
+          margin-right: 0.8rem;
+        }
+
+        span {
+          font-size: 1rem;
+        }
+
+        &:hover {
+          background: #f9f9f9;
+        }
+
+        &.active {
+          background: #e8f5e9;
+          border-left: 4px solid #5db075;
+
+          i,
+          span {
+            color: #5db075;
+          }
+        }
+      }
+    }
+
+    .logout {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      color: #f44336;
+      cursor: pointer;
+
+      &:hover {
+        background: #fdecea;
+      }
+    }
+  }
+
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #5db075;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: 4rem;
+    color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1200; /* Above both sidenav and overlay */
+  }
+  /* Top Bar */
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4rem;
+    background-color: #5DB075; /* Green top bar */
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .menu-button {
+      background: none;
+      border: none;
+      color: black;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .profile {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .notification-dot {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  /* Notifications Pop-up */
+  .notifications {
+    position: absolute;
+    top: 4.5rem;
+    right: 1rem;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 1rem;
+    display: none; /* Hidden by default */
+
+    &.visible {
+      display: block; /* Show when visible class is added */
+    }
+
+    h3 {
+      margin: 0 0 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .notification-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #ddd; /* Add line between notifications */
+
+      &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none; /* Remove line for the last notification */
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 0.75rem;
+      }
+
+      .notification-content {
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+          color: #333;
+
+          &:first-child {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+          }
+
+          &:last-child {
+            font-style: italic;
+            color: #666;
+          }
+        }
+
+        small {
+          display: block;
+          font-size: 0.75rem;
+          color: #888;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+
+  /* Feedback Section */
+  .feedback-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-weight: 600; /* Semi-bold for titles */
+    font-size: 1.5rem;
+  }
+
+  .feedback-cards {
+    display: none; /* Hide all forms by default */
+
+    &.active {
+      display: grid; /* Show the active form */
+      grid-template-columns: repeat(2, 1fr); /* Two columns */
+      gap: 1.5rem; /* Space between the cards */
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1rem; /* Rounded corners */
+      padding: 2rem;
+      font-weight: 600; /* Semi-bold for feedback numbers */
+      font-size: 1.2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+      background-color: #ffffff; /* White background */
+      border: 2px solid transparent; /* Border for styling consistency */
+
+      h3 {
+        margin: 0;
+        font-size: 2rem;
+        color: inherit; /* Match color with the card */
+        font-weight: 700; /* Bold for emphasis */
+      }
+
+      p {
+        margin: 0.5rem 0 0;
+        font-size: 1rem;
+        color: #666;
+        font-weight: 400; /* Normal weight for text */
+      }
+
+      &.positive {
+        border-color: #4caf50; /* Green border */
+        color: #4caf50;
+      }
+
+      &.negative {
+        border-color: #f44336; /* Red border */
+        color: #f44336;
+      }
+
+      &.neutral {
+        border-color: #ffeb3b; /* Yellow border */
+        color: #ffeb3b;
+      }
+
+      &.total-feedbacks {
+        border-color: #000; /* Black border */
+        color: #000;
+      }
+    }
+  }
+
+  /* Pagination Dots */
+  .pagination-dots {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      background-color: gray;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &.active {
+        background-color: #5DB075; /* Green for active dot */
+      }
+    }
+  }
+
+  /* Recent Forms Section */
+  .recent-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-weight: 600; /* Semi-bold for section title */
+    font-size: 1.5rem;
+  }
+
+  .recent-forms {
+    background-color: #ffffff; /* White background for the section */
+    padding: 1rem;
+    border-radius: 1rem; /* Rounded corners for the whole container */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-top: 1.5rem;
+
+    .form-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f9f9f9; /* Light gray background for individual boxes */
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem; /* Rounded corners for each item */
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for each item */
+
+      .form-details {
+        p {
+          margin: 0;
+          font-weight: 600; /* Semi-bold for form name */
+          font-size: 1rem; /* Larger font for the form name */
+          color: #5DB075; /* Same green color as the top bar */
+        }
+        small {
+          color: #888; /* Subtle gray for the last update text */
+          font-size: 0.85rem;
+          font-weight: 400; /* Normal weight for text */
+        }
+      }
+
+      i {
+        color: #aaa; /* Subtle icon color */
+        font-size: 1.2rem; /* Slightly larger for visibility */
+        cursor: pointer; /* Make it clickable */
+      }
+    }
+  }
+}

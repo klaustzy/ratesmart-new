@@ -29,7 +29,12 @@
       <a routerLink="/forgot-password" class="forgot-link">Forgot Password? <span class="reset">Reset</span></a>
 
 
-      <button pButton label="Log In" class="p-button-rounded p-button-success login-button"></button>
+      <button 
+          pButton 
+          label="Log In" 
+          class="p-button-rounded p-button-success login-button" 
+          (click)="login()">
+      </button>
 
       <div class="signup-link">
           New? <a routerLink="/sign-up">Sign up</a>

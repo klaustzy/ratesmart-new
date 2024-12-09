@@ -1,0 +1,156 @@
+<div class="dashboard">
+    <!-- Overlay -->
+    <div class="overlay" [class.show]="isSidenavOpen" (click)="toggleSidenav()"></div>
+  
+    <!-- Side Navigation -->
+    <div class="sidenav" [class.open]="isSidenavOpen">
+      <div class="sidenav-header" (click)="goToEditProfile()">
+        <img src="assets/kelly.jpg" alt="Profile Picture" />
+        <div class="user-info">
+          <h3>John Doe</h3>
+          <p>Admin</p>
+        </div>
+      </div>
+      <ul class="menu">
+        <li
+          class="menu-item"
+          [class.active]="currentTab === 'dashboard'"
+          (click)="setActiveTab('dashboard')"
+        >
+          <i class="pi pi-home"></i>
+          <span>Dashboard</span>
+          <li
+          class="menu-item"
+          [class.active]="currentTab === 'forms'"
+          (click)="setActiveTab('forms')"
+        >
+          <i class="pi pi-file"></i>
+          <span>Forms</span>
+        </li>
+        <li
+          class="menu-item"
+          [class.active]="currentTab === 'about'"
+          (click)="setActiveTab('about')"
+        >
+          <i class="pi pi-user"></i>
+          <span>About</span>
+        </li>
+        <li
+          class="menu-item"
+          [class.active]="currentTab === 'settings'"
+          (click)="setActiveTab('settings')"
+        >
+          <i class="pi pi-cog"></i>
+          <span>Settings</span>
+        </li>
+      </ul>
+      <div class="logout" (click)="logout()">
+        <span>Logout</span>
+      </div>
+    </div>
+  
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button class="menu-button" (click)="toggleSidenav()">
+        <i class="pi pi-bars"></i>
+      </button>
+      <h1 class="top-bar-title">Settings</h1>
+    </div>
+  
+    <!-- Notifications Pop-up -->
+    <div class="notifications" [class.visible]="isNotificationsVisible">
+      <h3>Notifications</h3>
+      <div class="notification-item">
+        <img src="assets/kelly.jpg" alt="User Avatar" />
+        <div class="notification-content">
+          <p>pogi&#64;gmail.com</p>
+          <small>Oct 30</small>
+          <p>"Help me please"</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <img src="assets/kelly.jpg" alt="User Avatar" />
+        <div class="notification-content">
+          <p>pogi&#64;gmail.com</p>
+          <small>Oct 30</small>
+          <p>"Help me please"</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <img src="assets/kelly.jpg" alt="User Avatar" />
+        <div class="notification-content">
+          <p>pogi&#64;gmail.com</p>
+          <small>Oct 30</small>
+          <p>"Help me please"</p>
+        </div>
+      </div>
+    </div>
+    <!-- Content -->
+  <div class="settings-content">
+    <div class="setting-item">
+      <span>Light Mode</span>
+      <p-toggleButton [(ngModel)]="isLightMode" onLabel="On" offLabel="Off"></p-toggleButton>
+    </div>
+
+    <hr />
+
+    <div class="setting-item">
+      <span>Notifications</span>
+      <p-toggleButton [(ngModel)]="isNotificationsEnabled" onLabel="On" offLabel="Off"></p-toggleButton>
+    </div>
+
+    <hr />
+
+    <div class="setting-item">
+        <span>Theme</span>
+        <div class="custom-dropdown" (click)="toggleDropdown()">
+          <div class="dropdown-selected">{{ selectedTheme?.label || 'Select Theme' }}</div>
+          <ul class="dropdown-options" *ngIf="isDropdownOpen">
+            <li
+              *ngFor="let theme of themes"
+              (click)="selectTheme(theme)"
+              [class.selected]="theme.value === selectedTheme?.value"
+            >
+              {{ theme.label }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    
+<!-- Delete Account Button -->
+<button class="delete-account" (click)="openConfirmationModal()">Delete Account</button>
+
+<!-- Confirmation Modal -->
+<div class="modal" *ngIf="isConfirmationModalOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Delete Account?</h3>
+    <p>Are you sure you want to delete your account?</p>
+    <div class="modal-actions">
+      <button (click)="confirmDeletion()" class="yes-button">Yes</button>
+      <button (click)="closeModal()" class="cancel-button">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Password Modal -->
+<div class="modal" *ngIf="isPasswordModalOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Password</h3>
+    <input
+      type="password"
+      id="password"
+      [(ngModel)]="password"
+      placeholder="Password"
+    />
+    <button (click)="finalizeDeletion()" class="delete-button">Delete Account</button>
+  </div>
+</div>
+
+
+
+
+</div>
+  
+  
+  

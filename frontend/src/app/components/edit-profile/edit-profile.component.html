@@ -1,0 +1,153 @@
+<div class="dashboard">
+    <!-- Overlay -->
+    <div class="overlay" [class.show]="isSidenavOpen" (click)="toggleSidenav()"></div>
+
+    <!-- Side Navigation -->
+    <div class="sidenav" [class.open]="isSidenavOpen">
+        <div class="sidenav-header" (click)="goToEditProfile()">
+            <img src="assets/kelly.jpg" alt="Profile Picture" />
+            <div class="user-info">
+                <h3>John Doe</h3>
+                <p>Admin</p>
+            </div>
+        </div>
+        <ul class="menu">
+            <li
+                class="menu-item"
+                [class.active]="currentTab === 'dashboard'"
+                (click)="setActiveTab('dashboard')"
+            >
+                <i class="pi pi-home"></i>
+                <span>Dashboard</span>
+            </li>
+            <li
+                class="menu-item"
+                [class.active]="currentTab === 'forms'"
+                (click)="setActiveTab('forms')"
+            >
+                <i class="pi pi-file"></i>
+                <span>Forms</span>
+            </li>
+            <li
+                class="menu-item"
+                [class.active]="currentTab === 'about'"
+                (click)="setActiveTab('about')"
+            >
+                <i class="pi pi-user"></i>
+                <span>About</span>
+            </li>
+            <li
+                class="menu-item"
+                [class.active]="currentTab === 'settings'"
+                (click)="setActiveTab('settings')"
+            >
+                <i class="pi pi-cog"></i>
+                <span>Settings</span>
+            </li>
+        </ul>
+        <div class="logout" (click)="logout()">
+            <span>Logout</span>
+        </div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <button class="menu-button" (click)="toggleSidenav()">
+            <i class="pi pi-bars"></i>
+        </button>
+        <h1>Edit Profile</h1>
+    </div>
+
+    <!-- Edit Profile Form -->
+    <div class="edit-profile-container">
+        <div class="profile-header">
+            <div class="profile-picture">
+                <img [src]="profilePicture" alt="Profile Picture" />
+              </div>
+              <button class="profile-picture-edit" (click)="fileInput.click()">
+                <i class="pi pi-camera"></i>
+              </button>
+              <input
+                type="file"
+                #fileInput
+                accept="image/*"
+                (change)="onFileSelected($event)"
+                style="display: none"
+              />
+            <h2>John Doe</h2>
+          </div>
+
+        <div class="personal-info">
+            <div class="info-header">
+              <h3>Personal Information</h3>
+              <button class="edit-button" (click)="toggleEditMode()">
+                <i class="pi pi-pencil"></i>
+              </button>
+            </div>
+          
+            <form>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input
+                        id="firstName"
+                        type="text"
+                        pInputText
+                        placeholder="First Name"
+                        [(ngModel)]="firstName"
+                        name="firstName"
+                        [disabled]="!isEditMode"
+                    />
+                </div>
+            
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input
+                        id="lastName"
+                        type="text"
+                        pInputText
+                        placeholder="Last Name"
+                        [(ngModel)]="lastName"
+                        name="lastName"
+                        [disabled]="!isEditMode"
+                    />
+                </div>
+            
+                <div class="form-group">
+                    <label for="email">Email (Optional)</label>
+                    <input
+                        id="email"
+                        type="email"
+                        pInputText
+                        placeholder="Email"
+                        [(ngModel)]="email"
+                        name="email"
+                        [disabled]="!isEditMode"
+                    />
+                </div>
+            
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input
+                        id="username"
+                        type="text"
+                        pInputText
+                        placeholder="Username"
+                        [(ngModel)]="username"
+                        name="username"
+                        [disabled]="!isEditMode"
+                    />
+                </div>
+            
+                <div class="form-buttons" *ngIf="isEditMode">
+                    <button pButton type="button" (click)="saveProfile()" label="Save" class="save-button"></button>
+                    <button pButton type="button" (click)="resetForm()" label="Cancel" class="cancel-button"></button>
+                </div>                
+            </form>
+            
+          </div>
+          <div class="save-popup" *ngIf="isSaved">
+            <p>SAVED!</p>
+          </div>
+          
+</div>
+
