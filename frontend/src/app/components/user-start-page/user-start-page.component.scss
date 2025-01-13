@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; // Centers the entire content but won't affect individual elements
+    height: 100vh;
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 0.9; // Reduces spacing between RATE and SMART
+    margin-bottom: 20px; // Keeps a small gap below RATE SMART, won't move it
+}
+
+.rate {
+    color: #2d6936; // Original color for RATE
+    font-size: 70px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: -10px; // Adjusts spacing between RATE and SMART
+}
+
+.smart {
+    color: #fff;
+    font-size: 48px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    -webkit-text-stroke: 1px #2d6936; // Stroke color for SMART
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 100px; // Adds more space between RATE SMART and the buttons
+}
+
+.start-button {
+    background-color: #5DB075; // Green color for Login
+    border-color: #5DB075;
+    color: #fff;
+    font-weight: bold;
+  }
+  

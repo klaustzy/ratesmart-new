@@ -120,10 +120,12 @@
         </button>
       </div>
     
-      <!-- QR Code Section -->
       <div class="qr-code-container">
         <div class="qr-code-section">
-          <img [src]="qrCodeUrl" alt="QR Code" />
+          <!-- Wrap the QR code in a clickable anchor -->
+          <a (click)="goToUserStartPage()">
+            <img [src]="qrCodeUrl" alt="QR Code" />
+          </a>
           <button class="save-button" (click)="saveQRCode()">Save</button>
         </div>
       </div>

@@ -16,6 +16,11 @@ import { AboutComponent } from './components/about/about.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ContactSupportComponent } from './components/contact-support/contact-support.component';
+import { UserStartPageComponent } from './components/user-start-page/user-start-page.component';
+import { UserSubmitP1Component } from './components/user-submit-p1/user-submit-p1.component';
+import { UserSubmitP2Component } from './components/user-submit-p2/user-submit-p2.component';
+import { UserSubmitP3Component } from './components/user-submit-p3/user-submit-p3.component';
+import { UserSubmitP4Component } from './components/user-submit-p4/user-submit-p4.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -35,5 +40,11 @@ export const routes: Routes = [
   { path: 'settings', component: SettingsComponent},
   { path: 'edit-profile', component: EditProfileComponent},
   { path: 'contact-support', component: ContactSupportComponent},
+  { path: 'user-start', component: UserStartPageComponent},
+  { path: 'user-submit-p1', component: UserSubmitP1Component},
+  { path: 'user-submit-p2', component: UserSubmitP2Component},
+  { path: 'user-submit-p3', component: UserSubmitP3Component},
+  { path: 'user-submit-p4', component: UserSubmitP4Component},
+
   { path: '**', redirectTo: '' }, // Fallback to the landing page
 ];

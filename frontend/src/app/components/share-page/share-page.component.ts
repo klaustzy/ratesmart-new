@@ -90,4 +90,7 @@ export class SharePageComponent {
   goToEditProfile(): void {
     this.router.navigate(['/edit-profile']);
   }
+  goToUserStartPage(): void {
+    this.router.navigate(['/user-start']); // Replace with the actual route
+  }
 }

@@ -1,0 +1,40 @@
+<div class="container">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <h1></h1>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="content">
+      <!-- Section Title -->
+      <div class="section-title">
+        <h2>[NAME OF SECTION]</h2>
+        <hr />
+      </div>
+  
+      <!-- Age Input -->
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input
+          id="age"
+          type="text"
+          [(ngModel)]="userAge"
+          placeholder="Enter your Age"
+          class="age-input"
+          maxlength="2"
+          (input)="validateAge()"
+        />
+      </div>
+  
+      <!-- Calendar -->
+      <div class="form-group">
+        <label for="calendar">Select a date</label>
+        <input id="calendar" type="date" [(ngModel)]="selectedDate" />
+      </div>
+  
+      <!-- Next Button -->
+      <div class="button-container">
+        <button [routerLink]="['/user-submit-p2']">Next</button>
+      </div>
+    </div>
+</div>

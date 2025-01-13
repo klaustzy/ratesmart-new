@@ -1,0 +1,189 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif; /* Global font */
+}
+
+/* Top Bar */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #5db075;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Content */
+.content {
+    margin-top: 80px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Section Title */
+.section-title h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.section-title hr {
+    width: 50px;
+    margin: 8px auto;
+    border: 1px solid #ccc;
+}
+
+/* Question Text */
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Poppins', sans-serif; /* Ensure label uses the correct font */
+}
+
+/* Rating */
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    i {
+        font-size: 32px;
+        color: #ccc; /* Default star color */
+        margin: 5px;
+        cursor: pointer;
+
+        &.full-star {
+            color: #ffcc00; /* Full color for selected stars */
+        }
+
+        &:hover {
+            color: #ffd700; /* Highlight color on hover */
+        }
+    }
+}
+
+/* Form Group */
+.form-group {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 16px;
+    text-align: left;
+
+    textarea,
+    input[type='number'] {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: 'Poppins', sans-serif;
+    }
+}
+
+/* Improvement Options */
+.improvement-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    button {
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+
+        &.selected {
+            background-color: #5db075;
+            color: black;
+        }
+    }
+}
+
+/* Button Container */
+.button-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 16px;
+
+    button {
+        background-color: #5db075; /* Green button background */
+        color: white; /* White text */
+        border: none;
+        border-radius: 25px; /* Rounded corners */
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        font-family: 'Poppins', sans-serif;
+
+        &:hover {
+            background-color: #4a915d; /* Darker green on hover */
+        }
+    }
+}
+
+/* Improvement Buttons */
+.improvement-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    button {
+        background-color: #f5f5f5; /* Light gray background */
+        color: black; /* Text color set to black */
+        border: 1px solid #ccc; /* Optional border for contrast */
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+
+        &:hover {
+            background-color: #e0e0e0; /* Slightly darker gray on hover */
+        }
+
+        &.selected {
+            background-color: #5db075; /* Green background when selected */
+            color: white; /* White text when selected */
+        }
+    }
+}
+.back-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    left: 16px;
+
+    i {
+        font-size: 24px;
+    }
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+

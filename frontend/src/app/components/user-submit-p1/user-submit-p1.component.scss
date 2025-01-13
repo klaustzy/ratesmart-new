@@ -1,0 +1,111 @@
+/* Container */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  /* Top Bar */
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #5db075;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  /* Content */
+  .content {
+    margin-top: 80px; /* Leaves space for the fixed top bar */
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Section Title */
+  .section-title h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .section-title hr {
+    width: 50px;
+    margin: 8px auto;
+    border: 1px solid #ccc;
+  }
+  
+  /* Form Group */
+  .form-group {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  select,
+  input[type='date'] {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Button Container */
+  .button-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  
+  button {
+    background-color: #5db075;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+  
+    &:hover {
+      background-color: #4a915d;
+    }
+  }
+  
+
+/* Add styles specific to the age input */
+.age-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    &:focus {
+        border-color: #5db075;
+        outline: none;
+        box-shadow: 0 0 5px rgba(93, 176, 117, 0.5);
+    }
+}

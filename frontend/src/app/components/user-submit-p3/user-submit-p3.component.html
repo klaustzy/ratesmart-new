@@ -1,0 +1,45 @@
+<div class="container">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <button class="back-button" [routerLink]="['/user-submit-p2']">
+            <i class="pi pi-arrow-left"></i>
+        </button>
+        <h1></h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Section Title -->
+        <div class="section-title">
+            <h2>[NAME OF SECTION]</h2>
+            <hr />
+        </div>
+
+        <!-- Emoji Ratings -->
+        <div class="emoji-rating">
+            <span *ngFor="let emoji of emojis; let i = index" (click)="selectEmoji(i)">
+                <span
+                    [ngClass]="{ 'selected-emoji': selectedEmoji === i, 'dim-emoji': selectedEmoji !== null && selectedEmoji !== i }"
+                >
+                    {{ emoji }}
+                </span>
+            </span>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Feedback Title -->
+        <p class="feedback-title">Let us know your thoughts</p>
+
+        <!-- Feedback -->
+        <div class="form-group">
+            <label for="feedback">Leave a comment</label>
+            <textarea id="feedback" placeholder="Feedback" [(ngModel)]="feedback"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="button-container">
+            <button [routerLink]="['/user-submit-p4']">Submit</button>
+        </div>
+    </div>
+</div>

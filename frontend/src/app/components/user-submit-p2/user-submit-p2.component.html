@@ -1,0 +1,49 @@
+<div class="container">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <button class="back-button" [routerLink]="['/user-submit-p1']">
+            <i class="pi pi-arrow-left"></i>
+        </button>
+        <h1></h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Section Title -->
+        <div class="section-title">
+            <h2>[NAME OF SECTION]</h2>
+            <hr />
+        </div>
+
+        <div class="rating">
+            <i
+              *ngFor="let star of stars; let i = index"
+              class="pi pi-star"
+              [ngClass]="{ 'full-star': i < selectedStars }"
+              (click)="onStarClick(i)"
+            ></i>
+        </div>
+
+        <!-- Question and Feedback -->
+        <div class="form-group">
+            <label for="feedback">Question</label>
+            <textarea id="feedback" placeholder="Feedback" [(ngModel)]="feedback"></textarea>
+        </div>
+
+        <!-- Improvements -->
+        <div class="improvement-buttons">
+            <button
+              *ngFor="let option of improvementOptions"
+              [ngClass]="{ selected: option.selected }"
+              (click)="toggleOption(option)"
+            >
+              {{ option.label }}
+            </button>
+        </div>
+
+        <!-- Next Button -->
+        <div class="button-container">
+            <button [routerLink]="['/user-submit-p3']">Next</button>
+        </div>
+    </div>
+</div>
